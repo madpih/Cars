@@ -9,6 +9,7 @@ namespace Cars.Core.Dto
     public class CarDto
     {
         public Guid? Id { get; set; }
+        public string Make { get; set; }
         public DateTime InitialReg { get; set; }
         public int Engine { get; set; }
         public string Fuel { get; set; }

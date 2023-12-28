@@ -32,6 +32,7 @@ namespace Cars.ApplicatioServices.Services
         {
             Car car = new Car();
             car.Id = Guid.NewGuid();
+            car.Make = dto.Make;
             car.Engine = dto.Engine;
             car.InitialReg = dto.InitialReg;
             car.Mileage = dto.Mileage;
@@ -58,6 +59,7 @@ namespace Cars.ApplicatioServices.Services
             Car car = new Car();
 
             car.Id = dto.Id;
+            car.Make = dto.Make;
             car.Engine = dto.Engine;
             car.InitialReg = dto.InitialReg;
             car.Mileage = dto.Mileage;

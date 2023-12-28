@@ -9,7 +9,7 @@ using System.Xml;
 
 namespace Cars.Core.ServiceInterface
 {
-    public interface ICarServices
+    public interface ICarsServices
     {
         Task<Car> Create(CarDto dto);
         Task<Car> DetailsAsync(Guid id);

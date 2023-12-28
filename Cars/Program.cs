@@ -1,7 +1,19 @@
+using Cars.ApplicatioServices.Services;
+using Cars.Core.ServiceInterface;
+using Cars.Data;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+//builder.Services.AddScoped<IFileServices, FileServices>();
+builder.Services.AddScoped<ICarsServices, CarsServices>();
+
+builder.Services.AddDbContext<CarsContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
 
 var app = builder.Build();
 

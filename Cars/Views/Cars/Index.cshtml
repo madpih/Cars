@@ -1,5 +1,51 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model IEnumerable<Cars.Models.Cars.CarIndexViewModel>
+
 @{
+    int rowNumber = 1;
 }
+
+<div>
+    <a asp-action="create" asp-controller="Cars" type="submit" class="btn btn-primary">Create</a>
+</div>
+
+
+<div class="h1">
+    Luxury cars
+</div>
+<form method="post">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Nr</th>
+                <th scope="col">Make</th>
+                <th scope="col">Color</th>
+                <th scope="col">Transmission</th>
+                <th scope="col">Mileage</th>
+                <th scope="col">Price</th>
+                <th></th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var cars in Model)
+            {
+                <tr>
+                    <td>@rowNumber</td>
+                    <td>@cars.Make</td>
+                    <td>@cars.Color</td>
+                    <td>@cars.Transmission</td>
+                    <td>@cars.Mileage</td>
+                    <td>@cars.Price</td>
+                    <td>
+                        <a asp-action="details" asp-controller="Cars" asp-route-id="@cars.Id" class="btn btn-info">Details</a>
+                        <a asp-action="update" asp-controller="Cars" asp-route-id="@cars.Id" class="btn btn-outline-primary">Update</a>
+                        <a asp-action="delete" asp-controller="Cars" asp-route-id="@cars.Id" class="btn btn-outline-danger">Delete</a>
+                    </td>
+                </tr>
+
+                rowNumber += 1;
+            }
+        </tbody>
+    </table>
+</form>
+

@@ -8,10 +8,8 @@ namespace Cars.Data
        
             public CarsContext(DbContextOptions<CarsContext> options)
             : base(options) { }
-
             public DbSet<Car> Cars { get; set; }
-            //public DbSet<Car> FileToApis { get; set; }
-            //public DbSet<FileToDatabase> FileToDatabases { get; set; }
+            public DbSet<FileToDatabase> FileToDatabases { get; set; }
 
         }
     }

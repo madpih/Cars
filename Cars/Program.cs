@@ -8,7 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-//builder.Services.AddScoped<IFileServices, FileServices>();
+builder.Services.AddScoped<IFileServices, FileServices>();
 builder.Services.AddScoped<ICarsServices, CarsServices>();
 
 builder.Services.AddDbContext<CarsContext>(options =>

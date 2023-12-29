@@ -30,7 +30,7 @@
             <label asp-for="InitialReg" class="col-sm-2 col-form-label"></label>
             @Html.DisplayFor(model => model.InitialReg)
         </div>
-
+   
         <div class="form-group row">
             <label asp-for="Fuel" class="col-sm-2 col-form-label"></label>
             @Html.DisplayFor(model => model.Fuel)
@@ -61,6 +61,11 @@
             <label asp-for="UpdatedAt" class="col-sm-2 col-form-label"></label>
             @Html.DisplayFor(model => model.UpdatedAt)
         </div>
+
+        @foreach (var images in Model.Image)
+        {
+            <partial name="_Images" model="images" />
+        }
     </dl>
 
 

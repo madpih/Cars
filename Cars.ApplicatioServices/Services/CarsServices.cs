@@ -3,12 +3,7 @@ using Cars.Core.Dto;
 using Cars.Core.ServiceInterface;
 using Cars.Data;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml;
+
 
 namespace Cars.ApplicatioServices.Services
 {
@@ -16,16 +11,16 @@ namespace Cars.ApplicatioServices.Services
 
     {
         private readonly CarsContext _context;
-        //private readonly IFileServices _fileServices;
+        private readonly IFileServices _fileServices;
 
-        public CarsServices 
+        public CarsServices
             (
-            CarsContext context
-            //IFileServices fileServices
+            CarsContext context,
+            IFileServices fileServices
             )
         {
             _context = context;
-            //_fileServices = fileServices;
+            _fileServices = fileServices;
         }
 
         public async Task<Car> Create(CarDto dto)
@@ -43,10 +38,10 @@ namespace Cars.ApplicatioServices.Services
             car.CreatedAt = dto.CreatedAt;
             car.UpdatedAt = dto.UpdatedAt;
 
-            //if (dto.Files != null)
-            //{
-            //    _fileServices.UploadFilesToDatabase(dto, car);
-            //}
+            if (dto.Files != null)
+            {
+                _fileServices.UploadFilesToDatabase(dto, car);
+            }
 
             await _context.Cars.AddAsync(car);
             await _context.SaveChangesAsync();
@@ -70,10 +65,10 @@ namespace Cars.ApplicatioServices.Services
             car.CreatedAt = dto.CreatedAt;
             car.UpdatedAt = dto.UpdatedAt;
 
-            //if (dto.Files != null)
-            //{
-            //    _fileServices.UploadFilesToDatabase(dto, car);
-            //}
+            if (dto.Files != null)
+            {
+                _fileServices.UploadFilesToDatabase(dto, car);
+            }
 
             _context.Cars.Update(car);
             await _context.SaveChangesAsync();
@@ -90,14 +85,19 @@ namespace Cars.ApplicatioServices.Services
 
         public async Task<Car> Delete(Guid id)
         {
-            var result = await _context.Cars
+            var car = await _context.Cars
                 .FirstOrDefaultAsync(x => x.Id == id);
 
-            _context.Cars.Remove(result);
-            await _context.SaveChangesAsync();
+            if (car != null)
+            {
+                // Remove associated images from the database
+                await _fileServices.RemoveImagesByCarId(car.Id);
 
-            return result;
+                _context.Cars.Remove(car);
+                await _context.SaveChangesAsync();
+            }
+
+            return car;
         }
     }
-
 }

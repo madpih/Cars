@@ -28,6 +28,7 @@ namespace Cars.ApplicatioServices.Services
             Car car = new Car();
             car.Id = Guid.NewGuid();
             car.Make = dto.Make;
+            car.CarModel = dto.CarModel;
             car.Engine = dto.Engine;
             car.InitialReg = dto.InitialReg;
             car.Mileage = dto.Mileage;
@@ -35,8 +36,8 @@ namespace Cars.ApplicatioServices.Services
             car.Fuel = dto.Fuel;
             car.Transmission = dto.Transmission;
             car.Price = dto.Price;
-            car.CreatedAt = dto.CreatedAt;
-            car.UpdatedAt = dto.UpdatedAt;
+            car.CreatedAt = DateTime.Now;
+            car.UpdatedAt = DateTime.Now;
 
             if (dto.Files != null)
             {
@@ -55,6 +56,7 @@ namespace Cars.ApplicatioServices.Services
 
             car.Id = dto.Id;
             car.Make = dto.Make;
+            car.CarModel= dto.CarModel;
             car.Engine = dto.Engine;
             car.InitialReg = dto.InitialReg;
             car.Mileage = dto.Mileage;
@@ -63,7 +65,7 @@ namespace Cars.ApplicatioServices.Services
             car.Transmission = dto.Transmission;
             car.Price = dto.Price;
             car.CreatedAt = dto.CreatedAt;
-            car.UpdatedAt = dto.UpdatedAt;
+            car.UpdatedAt = DateTime.Now;
 
             if (dto.Files != null)
             {

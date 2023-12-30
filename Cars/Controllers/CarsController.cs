@@ -37,9 +37,8 @@ namespace Cars.Controllers
                 {
                     Id = x.Id,
                     Make = x.Make,
+                    CarModel = x.CarModel,
                     Color = x.Color,
-                    Transmission = x.Transmission,
-                    Mileage = x.Mileage,
                     Price = x.Price,
                    
                 });
@@ -73,6 +72,7 @@ namespace Cars.Controllers
 
             vm.Id = car.Id;
             vm.Make = car.Make;
+            vm.CarModel = car.CarModel;
             vm.Transmission = car.Transmission;
             vm.Color = car.Color;
             vm.Mileage = car.Mileage;
@@ -103,6 +103,7 @@ namespace Cars.Controllers
             {
                 Id = vm.Id,
                 Make = vm.Make,
+                CarModel = vm.CarModel,
                 Transmission = vm.Transmission,
                 Color = vm.Color,
                 Mileage = vm.Mileage,
@@ -160,6 +161,7 @@ namespace Cars.Controllers
 
             vm.Id = car.Id;
             vm.Make = car.Make;
+            vm.CarModel=car.CarModel;
             vm.Transmission = car.Transmission;
             vm.Color = car.Color;
             vm.Mileage = car.Mileage;
@@ -182,6 +184,7 @@ namespace Cars.Controllers
             {
                 Id = vm.Id,
                 Make = vm.Make,
+                CarModel = vm.CarModel,
                 Transmission = vm.Transmission,
                 Color = vm.Color,
                 Mileage = vm.Mileage,
@@ -238,6 +241,7 @@ namespace Cars.Controllers
 
             vm.Id = car.Id;
             vm.Make = car.Make;
+            vm.CarModel = car.CarModel;
             vm.Transmission = car.Transmission;
             vm.Color = car.Color;
             vm.Mileage = car.Mileage;

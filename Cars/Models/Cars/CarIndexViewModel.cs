@@ -9,5 +9,7 @@
         public int Mileage { get; set; }
         public float Price { get; set; }
 
+        public List<CarImageViewModel> Images { get; set; }
+
     }
 }

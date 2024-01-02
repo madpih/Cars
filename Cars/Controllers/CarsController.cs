@@ -29,6 +29,23 @@ namespace Cars.Controllers
 
 
         [HttpGet]
+        //public IActionResult Index()
+        //{
+        //    var result = _context.Cars
+        //        .OrderByDescending(y => y.CreatedAt)
+        //        .Select(x => new CarIndexViewModel
+        //        {
+        //            Id = x.Id,
+        //            Make = x.Make,
+        //            CarModel = x.CarModel,
+        //            Color = x.Color,
+        //            Price = x.Price,
+
+        //        });
+
+        //    return View(result);
+        //}
+        [HttpGet]
         public IActionResult Index()
         {
             var result = _context.Cars
@@ -40,11 +57,25 @@ namespace Cars.Controllers
                     CarModel = x.CarModel,
                     Color = x.Color,
                     Price = x.Price,
-                   
+                    Images = _context.FileToDatabases
+                        .Where(f => f.CarId == x.Id)
+                        .Select(f => new CarImageViewModel
+                        {
+                            ImageId = f.Id,
+                            ImageTitle = f.ImageTitle,
+                            ImageData = f.ImageData,
+                            CarId = f.CarId,
+                            // If your images are stored in a folder, you can construct the image URL here
+                            //Image = Url.Content("~/path-to-your-images/" + f.Id + ".jpg")
+                            Image = string.Format("data:image/gif;base64,{0}", Convert.ToBase64String(f.ImageData))
+
+                        })
+                        .ToList()
                 });
 
             return View(result);
         }
+
 
         [HttpGet]
         public async Task<IActionResult> Details(Guid id)
@@ -286,6 +317,20 @@ namespace Cars.Controllers
 
             return RedirectToAction(nameof(Index));
         }
+
+        [HttpGet]
+        public async Task<IActionResult> GetImage(Guid imageId)
+        {
+            var image = await _context.FileToDatabases.FindAsync(imageId);
+
+            if (image == null || image.ImageData == null)
+            {
+                return NotFound();
+            }
+
+            return File(image.ImageData, "image/gif"); 
+        }
+
 
 
     }

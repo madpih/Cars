@@ -1,18 +1,41 @@
-html {
-  font-size: 14px;
-}
+﻿/*html {
+    font-size: 14px;
+}*/
 
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
+/*@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}*/
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+ }
+
+.front-text {
+    font-size: 10em;
+    letter-spacing: 2px;
+    font-weight: 300;
 }
+
+.front_p {
+    font-family: 'a Auto Signature';
+    font-size: 5em;
+}
+.front_body {
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-image: url(/images/720s-Spider.jpg);
+    background-color: #cccccc;
+    overflow:hidden;
+}
+
+a {
+    text-decoration: none !important;
+}
+

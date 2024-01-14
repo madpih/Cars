@@ -13,7 +13,6 @@ namespace Cars.Core.Dto
         public string Fuel { get; set; }
         public int Mileage { get; set; }
         public string Transmission { get; set; }
-
         public string Color { get; set; }
         public float Price { get; set; }
 

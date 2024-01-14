@@ -92,7 +92,6 @@ namespace Cars.ApplicatioServices.Services
 
             if (car != null)
             {
-                // Remove associated images from the database
                 await _fileServices.RemoveImagesByCarId(car.Id);
 
                 _context.Cars.Remove(car);

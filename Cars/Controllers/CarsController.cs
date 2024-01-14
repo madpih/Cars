@@ -26,25 +26,6 @@ namespace Cars.Controllers
             _fileServices = fileServices;
         }
 
-
-
-        [HttpGet]
-        //public IActionResult Index()
-        //{
-        //    var result = _context.Cars
-        //        .OrderByDescending(y => y.CreatedAt)
-        //        .Select(x => new CarIndexViewModel
-        //        {
-        //            Id = x.Id,
-        //            Make = x.Make,
-        //            CarModel = x.CarModel,
-        //            Color = x.Color,
-        //            Price = x.Price,
-
-        //        });
-
-        //    return View(result);
-        //}
         [HttpGet]
         public IActionResult Index()
         {

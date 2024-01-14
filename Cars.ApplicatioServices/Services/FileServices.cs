@@ -45,6 +45,7 @@ namespace Cars.ApplicatioServices.Services
                 }
             }
            
+        //delelete image on update
             public async Task<FileToDatabase> RemoveImageFromDatabase(FileToDatabaseDto dto)
             {
                 var imageId = await _context.FileToDatabases
@@ -57,6 +58,7 @@ namespace Cars.ApplicatioServices.Services
                 return null;
             }
 
+        //delete images on car delete
             public async Task RemoveImagesByCarId(Guid? carId)
             {
                 var images = await _context.FileToDatabases
